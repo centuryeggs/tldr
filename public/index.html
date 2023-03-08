@@ -3,9 +3,65 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      html, body, div, span, applet, object, iframe,
+      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+      a, abbr, acronym, address, big, cite, code,
+      del, dfn, em, img, ins, kbd, q, s, samp,
+      small, strike, strong, sub, sup, tt, var,
+      b, u, i, center,
+      dl, dt, dd, ol, ul, li,
+      fieldset, form, label, legend,
+      table, caption, tbody, tfoot, thead, tr, th, td,
+      article, aside, canvas, details, embed,
+      figure, figcaption, footer, header,
+      menu, nav, output, ruby, section, summary,
+      time, mark, audio, video, input {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font-weight: normal;
+        vertical-align: baseline;
+      }
+
+      /* HTML5 display-role reset for older browsers */
+      article, aside, details, figcaption, figure,
+      footer, header, menu, nav, section {
+        display: block;
+      }
+
+      body {
+        line-height: 1;
+      }
+
+      blockquote, q {
+        quotes: none;
+      }
+
+      blockquote:before, blockquote:after,
+      q:before, q:after {
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      /* custom */
+      a {
+        color: #7e8c8d;
+        text-decoration: none;
+      }
+      li {
+        list-style: none;
+      }
+      html, body {
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
     <noscript>
@@ -13,5 +69,28 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+      document.body.addEventListener(
+        "touchmove",
+        (e) => {
+          //阻止默认的处理方式(阻止下拉滑动的效果)
+          e.preventDefault();
+          // 这里可以允许内部元素滚动
+          document.querySelector(".content").scrollTop = XXX;
+          return false;
+        },
+        /**
+         如果我们是为了阻止页面滚动添加了上述代码，默认行为就是滚动页
+        面，但是如果我们阻止了这一默认行为，浏览器是无法预先知道的，
+        必须等待事件监听器执行完成后，才知道要去阻止默认行为。等待监
+        听器的执行是耗时的，，有些甚至耗时很明显，这样就会导致页面卡
+        顿。即便监听器是个空函数，也会产生一定的卡顿，毕竟空函数的执
+        行也会耗时。所以就有了passive属性，如果要阻止默认事件可以设
+        置passive：false。
+        */
+        { passive: false }
+      );
+
+    </script>
   </body>
 </html>
