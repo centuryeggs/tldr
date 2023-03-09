@@ -1,25 +1,97 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
+    />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <style>
-      html, body, div, span, applet, object, iframe,
-      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-      a, abbr, acronym, address, big, cite, code,
-      del, dfn, em, img, ins, kbd, q, s, samp,
-      small, strike, strong, sub, sup, tt, var,
-      b, u, i, center,
-      dl, dt, dd, ol, ul, li,
-      fieldset, form, label, legend,
-      table, caption, tbody, tfoot, thead, tr, th, td,
-      article, aside, canvas, details, embed,
-      figure, figcaption, footer, header,
-      menu, nav, output, ruby, section, summary,
-      time, mark, audio, video, input {
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video,
+      input {
         margin: 0;
         padding: 0;
         border: 0;
@@ -27,10 +99,22 @@
         font-weight: normal;
         vertical-align: baseline;
       }
-
+      body {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+      }
       /* HTML5 display-role reset for older browsers */
-      article, aside, details, figcaption, figure,
-      footer, header, menu, nav, section {
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      menu,
+      nav,
+      section {
         display: block;
       }
 
@@ -38,12 +122,15 @@
         line-height: 1;
       }
 
-      blockquote, q {
+      blockquote,
+      q {
         quotes: none;
       }
 
-      blockquote:before, blockquote:after,
-      q:before, q:after {
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
         content: none;
       }
       table {
@@ -58,14 +145,19 @@
       li {
         list-style: none;
       }
-      html, body {
+      html,
+      body {
         width: 100%;
       }
     </style>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
@@ -90,7 +182,80 @@
         */
         { passive: false }
       );
+      let xspacing = 8; // 每个水平位置的距离
+      let waveHeight; // 用数组保存波的高度（不完全需要）
+      let maxwaves = 10; // 相加的波的总数
+      let theta = 10;
 
+      // x 的增量值，根据周期和水平位置距离来计算
+      let dx = new Array(maxwaves); // 4个空值
+      let dx1 = new Array(maxwaves); // 4个空值
+      let dx2 = new Array(maxwaves); // 4个空值
+      let dx3 = new Array(maxwaves); // 4个空值
+
+      // setup() 函数将在程式开始时被调用一次
+      function setup() {
+        theta = random(10);
+        createCanvas(windowWidth, windowHeight);
+        frameRate(30); //每一秒该显示的影格数 1s/30帧 帧数越高越清晰 最高，否则很卡
+        // colorMode(RGB, 255, 255, 255, 100);
+        //width=windowWidth,波的宽度,储存画布宽度的系统变量。这值是由 createCanvas() 函数的第一个参数所定义
+        for (let i = 0; i < maxwaves; i++) {
+          dx[i] = random(0.03, 0.12); //波的陡峭度
+          dx1[i] = random(0.01, 0.3); //波的陡峭度
+          dx2[i] = random(0.2, 0.01); //波的陡峭度
+          dx3[i] = random(0.1, 0.01); //波的陡峭度
+        }
+        waveHeight = new Array(floor(width / xspacing));
+        colorMode(HSB);
+      }
+      // 在 setup() 之后被调用,持续地重复执行其中的代码
+      function draw() {
+        background("white"); //画布背景色
+        calcWave(dx);
+        renderWave([187, 212, 198], 5);
+        calcWave(dx1);
+        renderWave([187, 212, 198], 3);
+        calcWave(dx2);
+        renderWave([187, 212, 198], 4);
+        calcWave(dx3);
+        renderWave([187, 212, 198], 4);
+      }
+      function calcWave(dx) {
+        // theta 增量（尝试赋予 ‘角速度’ 不同的数值）
+        theta += 0.01; //波形滚动速度
+
+        // 所有高度设为 0
+        for (let i = 0; i < waveHeight.length; i++) {
+          waveHeight[i] = 0;
+        }
+        // 累积波的高度
+        for (let j = 0; j < maxwaves; j++) {
+          let x = theta;
+
+          for (let i = 0; i < waveHeight.length; i++) {
+            // 正弦余弦交替
+            x += dx[j];
+
+            if (j % 2 === 0) waveHeight[i] += sin(x) * 9;
+            else waveHeight[i] += cos(x) * 6;
+            x -= 0.05;
+          }
+        }
+      }
+      function renderWave(c, h) {
+        noStroke(0); //线条颜色 无
+        fill(...c, 0.3); //填充色
+        translate(1, 35);
+        beginShape();
+        // 顶点形成的。vertex() 可用于定义点、线、三角形、四角形及多边形的顶点坐标。它只能在 beginShape() 和 endShape() 函数之间使用。
+        vertex(width, height);
+        vertex(0, height);
+        for (let x = 0; x < waveHeight.length; x++) {
+          vertex(x * xspacing, width / h + waveHeight[x] + h * 4);
+        }
+        endShape();
+      }
     </script>
   </body>
 </html>

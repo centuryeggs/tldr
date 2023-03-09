@@ -55,11 +55,11 @@ export default {
 </script>
 
 <style scoped>
-#home {
+/* #home {
   color: #7dbed6;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-}
+} */
 
 </style>

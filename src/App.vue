@@ -11,16 +11,13 @@ export default {
   name: 'App',
   components: {
     Home
-  }
+  },
+  mounted() {}
 }
 </script>
 
 <style>
 #app {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
   text-align: center;
-  background-color: #3975c6;
 }
 </style>
