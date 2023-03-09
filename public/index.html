@@ -8,7 +8,6 @@
       content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
     />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-    <link href="./app.css" rel="stylesheet" type="text/css">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <style>
@@ -161,7 +160,6 @@
       >
     </noscript>
     <div id="app"></div>
-    <script src="./app.js"></script>
     <!-- built files will be auto injected -->
     <script>
       document.body.addEventListener(
@@ -213,19 +211,22 @@
       }
       // 在 setup() 之后被调用,持续地重复执行其中的代码
       function draw() {
+        console.log(window.waveStop);
+        if (window.waveStop) return
         background("#eee"); //画布背景色 
         calcWave(dx);
-        renderWave([187, 212, 198], 7);
+        renderWave(7);
         calcWave(dx1);
-        renderWave([187, 212, 198], 3);
+        renderWave(3);
         calcWave(dx2);
-        renderWave([187, 212, 198], 4);
+        renderWave(4);
         calcWave(dx3);
-        renderWave([187, 212, 198], 4);
+        renderWave(4);
       }
       function calcWave(dx) {
         // theta 增量（尝试赋予 ‘角速度’ 不同的数值）
-        theta += 0.02; //波形滚动速度
+        let waveSpeed = window.waveSpeed || 0.02
+        theta += waveSpeed; //波形滚动速度
 
         // 所有高度设为 0
         for (let i = 0; i < waveHeight.length; i++) {
@@ -245,7 +246,8 @@
           }
         }
       }
-      function renderWave(c, h) {
+      function renderWave(h) {
+        let c = window.waveColor || [185, 216, 201]
         noStroke(0); //线条颜色 无
         fill(...c, 0.3); //填充色
         translate(1, 35);
@@ -258,8 +260,6 @@
         }
         endShape();
       }
-      
     </script>
-   
   </body>
 </html>

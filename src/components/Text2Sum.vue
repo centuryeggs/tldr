@@ -250,7 +250,7 @@ export default {
 
 <style>
 #text {
-  padding-top: 80px;
+  padding-top: 150px;
   height: 100vh;
   width: 100vw;
   overflow: hidden;

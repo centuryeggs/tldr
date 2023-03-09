@@ -32,9 +32,9 @@ export default {
   position: absolute;
   margin: 0 auto;
   width: 100%;
-  font-size: 40px;
+  font-size: 60px;
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: 90px;
   color: #7dbed6;
 }
 </style>
