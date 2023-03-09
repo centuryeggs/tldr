@@ -55,7 +55,7 @@ export default {
 
 .text,
 .text .el-textarea__inner {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(102, 102, 102, 0.25);
   border: none;
   border-radius: 10px;
   color: #666;

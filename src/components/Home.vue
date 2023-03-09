@@ -1,7 +1,31 @@
 <template>
-  <div id="home">
-    <div style="font-size: 40px; margin-top: 60px">TL;DR</div>
+  <div id="home" style="font-size: 40px;">
+    <div style=" margin-top: 60px">TL;DR</div>
     <!-- <div style="font-size: 40px; margin-top: 10px">太长不看</div> -->
+    <transition name="bounce">
+      <div
+        class="vertical"
+        :style="{
+          color: direction === 'left' ? '#409eff' : '#666',
+          position: 'absolute',
+          left: '2%',
+          top: '40%',
+          fontSize: '60px'
+        }"
+      >
+        太长不看
+      </div>
+    </transition>
+
+    <div
+      class="vertical"
+      :style="{
+        color: direction === 'right' ? '#409eff' : '#666',
+        position: 'absolute',
+        right: '2%',
+        top: '40%',
+        fontSize: '60px'
+      }">太长不听</div>
   </div>
 </template>
 
@@ -55,11 +79,30 @@ export default {
 </script>
 
 <style scoped>
-/* #home {
+#home {
   color: #7dbed6;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-} */
-
+}
+.vertical {
+  writing-mode: tb-rl;
+}
+.bounce-enter-active {
+  animation: bounce-in 3s;
+}
+.bounce-leave-active {
+  animation: bounce-in 1s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+     transform: scale(2.2, 1.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 </style>

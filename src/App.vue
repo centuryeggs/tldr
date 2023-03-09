@@ -12,12 +12,14 @@ export default {
   components: {
     Home
   },
-  mounted() {}
+  mounted() {
+  }
 }
 </script>
 
 <style>
 #app {
   text-align: center;
+  position: absolute;
 }
 </style>
