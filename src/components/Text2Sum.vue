@@ -54,6 +54,7 @@ export default {
 
 <style>
 #text {
+  padding-top: 80px;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -66,11 +67,11 @@ export default {
   box-shadow: 0 1px 5px #0003, 0 2px 2px #00000024, 0 3px 1px -2px #0000001f;
   border-radius: 4px;
 }
-.inputBox {
+.upload {
   height: 30vh;
 }
 .outputBox {
-  height: 60vh;
+  height: 50vh;
   margin-top: 30px;
   display: flex;
   align-items: center;
@@ -83,8 +84,16 @@ export default {
   text-align: left;
   color:#666;
 }
-
+.upload, .upload-demo{
+  height: 100%;
+  width: 100%;
+}
+.el-upload.el-upload--text{
+  height: 100%;
+  width: 100%;
+}
 .el-upload-dragger{
   border:none;
+  width: 100%;
 }
 </style>

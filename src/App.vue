@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="title" style="margin-top: 30px; color: #7dbed6;" @click="goHome">TL;DR</div>
+    <div class="title" @click="goHome">TL;DR</div>
     <router-view></router-view>
   </div>
 </template>
@@ -29,7 +29,12 @@ export default {
   position: absolute;
 }
 .title {
+  position: absolute;
+  margin: 0 auto;
+  width: 100%;
   font-size: 40px;
   cursor: pointer;
+  margin-top: 30px;
+  color: #7dbed6;
 }
 </style>
