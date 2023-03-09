@@ -5,8 +5,9 @@
         <el-upload
           class="upload-demo"
           drag
-          action="http://172.29.188.240:8001/steam"
+          action="http://172.16.8.150:7773/steam"
           multiple
+          :on-success="handleAvatarSuccess"
         >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -52,6 +53,9 @@ export default {
     handleClick(tab, event) {
       console.log(tab, event)
     },
+    handleAvatarSuccess(res) {
+        this.results = res.data;
+      },
     init() {
       // set up basic variables for app
       const record = document.querySelector('.record')
@@ -141,6 +145,7 @@ export default {
             //生成ogg文件流
             audio.controls = true
             const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' })
+            // const blob = new Blob(chunks, { type: 'audio/wav' })
             chunks = []
             const audioURL = window.URL.createObjectURL(blob)
             audio.src = audioURL
@@ -281,16 +286,17 @@ export default {
   text-align: left;
   color: #666;
 }
-.upload, .upload-demo{
+.upload,
+.upload-demo {
   height: 100%;
   width: 100%;
 }
-.el-upload.el-upload--text{
+.el-upload.el-upload--text {
   height: 100%;
   width: 100%;
 }
-.el-upload-dragger{
-  border:none;
+.el-upload-dragger {
+  border: none;
   width: 100%;
 }
 </style>
