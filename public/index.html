@@ -1,25 +1,96 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
+    />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title><%= htmlWebpackPlugin.options.title %></title>
     <style>
-      html, body, div, span, applet, object, iframe,
-      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-      a, abbr, acronym, address, big, cite, code,
-      del, dfn, em, img, ins, kbd, q, s, samp,
-      small, strike, strong, sub, sup, tt, var,
-      b, u, i, center,
-      dl, dt, dd, ol, ul, li,
-      fieldset, form, label, legend,
-      table, caption, tbody, tfoot, thead, tr, th, td,
-      article, aside, canvas, details, embed,
-      figure, figcaption, footer, header,
-      menu, nav, output, ruby, section, summary,
-      time, mark, audio, video, input {
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video,
+      input {
         margin: 0;
         padding: 0;
         border: 0;
@@ -29,8 +100,16 @@
       }
 
       /* HTML5 display-role reset for older browsers */
-      article, aside, details, figcaption, figure,
-      footer, header, menu, nav, section {
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      menu,
+      nav,
+      section {
         display: block;
       }
 
@@ -38,12 +117,15 @@
         line-height: 1;
       }
 
-      blockquote, q {
+      blockquote,
+      q {
         quotes: none;
       }
 
-      blockquote:before, blockquote:after,
-      q:before, q:after {
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
         content: none;
       }
       table {
@@ -58,26 +140,31 @@
       li {
         list-style: none;
       }
-      html, body {
+      html,
+      body {
         width: 100%;
       }
     </style>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <script>
       document.body.addEventListener(
-        "touchmove",
+        'touchmove',
         (e) => {
           //阻止默认的处理方式(阻止下拉滑动的效果)
-          e.preventDefault();
+          e.preventDefault()
           // 这里可以允许内部元素滚动
           // document.querySelector(".content").scrollTop = XXX;
-          return false;
+          return false
         },
         /**
          如果我们是为了阻止页面滚动添加了上述代码，默认行为就是滚动页
@@ -89,8 +176,7 @@
         置passive：false。
         */
         { passive: false }
-      );
-
+      )
     </script>
   </body>
 </html>
