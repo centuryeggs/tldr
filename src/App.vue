@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Home />
+    <router-view></router-view>
   </div>
 </template>
 
@@ -21,6 +21,6 @@ export default {
   width: 100vw;
   overflow: hidden;
   text-align: center;
-  background-color: #1b1e2b;
+  background-color: #3975c6;
 }
 </style>
