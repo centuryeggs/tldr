@@ -163,13 +163,13 @@
     <!-- built files will be auto injected -->
     <script>
       document.body.addEventListener(
-        "touchmove",
+        'touchmove',
         (e) => {
           //阻止默认的处理方式(阻止下拉滑动的效果)
-          e.preventDefault();
+          e.preventDefault()
           // 这里可以允许内部元素滚动
           // document.querySelector(".content").scrollTop = XXX;
-          return false;
+          return false
         },
         /**
          如果我们是为了阻止页面滚动添加了上述代码，默认行为就是滚动页
@@ -256,6 +256,7 @@
         }
         endShape();
       }
+      )
     </script>
   </body>
 </html>
