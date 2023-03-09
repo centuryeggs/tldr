@@ -45,12 +45,6 @@ export default {
 </script>
 
 <style>
-#text {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-}
-
 .textBox {
   width: 80vw;
   padding: 0 5vw;
