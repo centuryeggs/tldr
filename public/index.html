@@ -213,7 +213,7 @@
       function draw() {
         background("white"); //画布背景色
         calcWave(dx);
-        renderWave([187, 212, 198], 5);
+        renderWave([187, 212, 198], 7);
         calcWave(dx1);
         renderWave([187, 212, 198], 3);
         calcWave(dx2);
@@ -223,7 +223,7 @@
       }
       function calcWave(dx) {
         // theta 增量（尝试赋予 ‘角速度’ 不同的数值）
-        theta += 0.01; //波形滚动速度
+        theta += 0.02; //波形滚动速度
 
         // 所有高度设为 0
         for (let i = 0; i < waveHeight.length; i++) {

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="title" style="margin-top: 30px; color: #7dbed6;" @click="goHome">TL;DR</div>
     <router-view></router-view>
   </div>
 </template>
@@ -13,6 +14,11 @@ export default {
     Home
   },
   mounted() {
+  },
+  methods: {
+    goHome() {
+      this.$router.push({ path: '/' })
+    }
   }
 }
 </script>
@@ -21,5 +27,9 @@ export default {
 #app {
   text-align: center;
   position: absolute;
+}
+.title {
+  font-size: 40px;
+  cursor: pointer;
 }
 </style>

@@ -53,6 +53,12 @@ export default {
 </script>
 
 <style>
+#text {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  color: #fff;
+}
 .inputBox,
 .outputBox {
   width: 1000px;
@@ -63,7 +69,6 @@ export default {
 .inputBox {
   height: 30vh;
 }
-
 .outputBox {
   height: 60vh;
   margin-top: 30px;

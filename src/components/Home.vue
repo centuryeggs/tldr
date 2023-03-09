@@ -1,30 +1,27 @@
 <template>
   <div id="home" style="font-size: 40px;">
-    <div style=" margin-top: 60px">TL;DR</div>
     <!-- <div style="font-size: 40px; margin-top: 10px">太长不看</div> -->
-    <transition name="bounce">
       <div
         class="vertical"
         :style="{
           color: direction === 'left' ? '#409eff' : '#666',
           position: 'absolute',
-          left: '2%',
-          top: '40%',
-          fontSize: '60px'
+          left: '40%',
+          top: '43%',
+          fontSize: '30px'
         }"
       >
         太长不看
       </div>
-    </transition>
 
     <div
       class="vertical"
       :style="{
         color: direction === 'right' ? '#409eff' : '#666',
         position: 'absolute',
-        right: '2%',
-        top: '40%',
-        fontSize: '60px'
+        right: '40%',
+        top: '43%',
+        fontSize: '30px'
       }">太长不听</div>
   </div>
 </template>
@@ -80,7 +77,6 @@ export default {
 
 <style scoped>
 #home {
-  color: #7dbed6;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -88,7 +84,7 @@ export default {
 .vertical {
   writing-mode: tb-rl;
 }
-.bounce-enter-active {
+/* .bounce-enter-active {
   animation: bounce-in 3s;
 }
 .bounce-leave-active {
@@ -104,5 +100,5 @@ export default {
   100% {
     transform: scale(1);
   }
-}
+} */
 </style>
