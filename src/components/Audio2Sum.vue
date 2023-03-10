@@ -12,6 +12,7 @@
           </div>
           <canvas id="canvas" class="canvas" width="400px" height="280px">
           </canvas>
+          <span class="time" v-if="oTime">{{ oTime }} s</span>
           <div class="buttons">
             <el-button
               type="warning"
@@ -31,14 +32,8 @@
               circle
               @click="downloadWAV()"
             ></el-button>
-            <!-- <button @click="start()">开始录音</button>
-            <button @click="stop()">停止录音</button>
-            <button @click="play()">播放录音</button>
-            <button @click="downloadWAV()">下载</button> -->
           </div>
         </div>
-
-        <span v-if="oTime > 0">录音时长：{{ oTime }}s</span>
       </div>
       <div class="upload boxShadow" style="margin-left: 15px;">
         <el-upload
@@ -112,7 +107,7 @@ export default {
         let _this = this
         this.recorder.onprocess = function (duration) {
           // 部分低版本浏览器不支持innerText，改用innerHTML
-          this.oTime = duration.toFixed(0)
+          _this.oTime = duration.toFixed(0)
         }
       }
       this.recorder.start().then(function () {
@@ -221,8 +216,8 @@ export default {
   margin: 30px auto;
 }
 
-.bgColor{
-  background-color:rgba(250, 250, 250,0.5);
+.bgColor {
+  background-color: rgba(250, 250, 250, 0.5);
 }
 
 .inputBox2 .left,
@@ -245,14 +240,13 @@ export default {
 .inputBox2 .left .cir {
   position: relative;
   left: -9px;
-  top:-9px;
+  top: -9px;
 }
 
 .inputBox2 .right .cir {
   position: relative;
   left: -9px;
-  top:-9px;
-
+  top: -9px;
 }
 
 .inputBox2 .left {
@@ -277,6 +271,13 @@ export default {
   border-radius: 10px;
   background: #01d8d0;
   position: relative;
+}
+
+.time {
+  position: absolute;
+  bottom: 30px;
+  color: #333;
+  right: 100px;
 }
 
 .buttons {
@@ -314,17 +315,17 @@ export default {
   width: 100%;
   position: relative;
 }
-.inputBox2 .el-upload-dragger{
+.inputBox2 .el-upload-dragger {
   height: 100%;
   background-color:rgba(250, 250, 250,0.4);
 }
 
 .inputBox2 .el-upload-dragger .el-icon-upload {
-    font-size: 67px;
-    color: #01d8d0;
-    margin: 40px 0 16px;
-    line-height: 50px;
-    margin-top: 120px;
+  font-size: 67px;
+  color: #01d8d0;
+  margin: 40px 0 16px;
+  line-height: 50px;
+  margin-top: 120px;
 }
 
 .inputBox2 .el-upload-list {
