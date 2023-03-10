@@ -51,7 +51,8 @@ export default {
       recorder: '',
       drawRecordId: null,
       oCanvas: '',
-      ctx: ''
+      ctx: '',
+      oTime:0,
     }
   },
   inject:["setLoading"],
