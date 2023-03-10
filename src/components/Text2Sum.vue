@@ -8,6 +8,8 @@
           action="http://172.16.8.150:7773/steam"
           multiple
           :on-success="handleAvatarSuccess"
+          :on-error="onError"
+          :on-progress="onProgress"
         >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -54,8 +56,19 @@ export default {
       console.log(tab, event)
     },
     handleAvatarSuccess(res) {
-        this.results = res.data;
-      },
+      this.results = res.data;
+      window.waveColor = [238, 238, 238]
+      window.waveSpeed = 0.03
+    },
+    onProgress(event, file, fileList) {
+      console.log(event, file, fileList);
+      window.waveColor =  [27, 30, 43]// [27, 30, 43] [252, 85, 49]
+      window.waveSpeed = 0.1
+    },
+    onError() {
+      window.waveColor = [238, 238, 238]
+      window.waveSpeed = 0.03
+    },
     init() {
       // set up basic variables for app
       const record = document.querySelector('.record')
@@ -89,6 +102,8 @@ export default {
           visualize(stream)
 
           record.onclick = function () {
+            window.waveSpeed = 0.005
+            // window.waveColor = [185, 216, 201] //
             //开始录制
             mediaRecorder.start()
             console.log(mediaRecorder.state)
@@ -100,6 +115,8 @@ export default {
           }
 
           stop.onclick = function () {
+            window.waveSpeed = 0.03
+            window.waveColor = [238, 238, 238]
             //调用stop后，自记录开始或dataavailable事件最后一次发生以来已捕获的所有媒体数据都将传递到Blob}中；此后，捕获结束。
             mediaRecorder.stop()
             console.log(mediaRecorder.state)
@@ -255,7 +272,6 @@ export default {
 
 <style>
 #text {
-  padding-top: 150px;
   height: 100vh;
   width: 100vw;
   overflow: hidden;

@@ -29,12 +29,11 @@ export default {
   position: absolute;
 }
 .title {
-  position: absolute;
   margin: 0 auto;
-  width: 100%;
   font-size: 60px;
   cursor: pointer;
   margin-top: 90px;
-  color: #7dbed6;
+  color: #7477f7;
+  display: inline-block;
 }
 </style>

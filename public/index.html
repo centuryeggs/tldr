@@ -8,7 +8,7 @@
       content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
     />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>TL;DR</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <style>
       html,
@@ -182,7 +182,7 @@
         */
         { passive: false }
       );
-      let xspacing = 8; // 每个水平位置的距离
+      let xspacing = 6; // 每个水平位置的距离
       let waveHeight; // 用数组保存波的高度（不完全需要）
       let maxwaves = 10; // 相加的波的总数
       let theta = 10;
@@ -215,17 +215,17 @@
         if (window.waveStop) return
         background("#eee"); //画布背景色 
         calcWave(dx);
-        renderWave(7);
+        renderWave(1);
         calcWave(dx1);
         renderWave(3);
         calcWave(dx2);
-        renderWave(4);
+        renderWave(5);
         calcWave(dx3);
-        renderWave(4);
+        renderWave(7);
       }
       function calcWave(dx) {
         // theta 增量（尝试赋予 ‘角速度’ 不同的数值）
-        let waveSpeed = window.waveSpeed || 0.02
+        let waveSpeed = window.waveSpeed || 0.03
         theta += waveSpeed; //波形滚动速度
 
         // 所有高度设为 0
@@ -247,7 +247,7 @@
         }
       }
       function renderWave(h) {
-        let c = window.waveColor || [185, 216, 201]
+        let c = window.waveColor || [238, 238, 238]
         noStroke(0); //线条颜色 无
         fill(...c, 0.3); //填充色
         translate(1, 35);
@@ -256,7 +256,7 @@
         vertex(width, height);
         vertex(0, height);
         for (let x = 0; x < waveHeight.length; x++) {
-          vertex(x * xspacing, width / h + waveHeight[x] + h * 4);
+          vertex(x * xspacing, width / h + waveHeight[x] + h * 4 - 50);
         }
         endShape();
       }
