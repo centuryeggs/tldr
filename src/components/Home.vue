@@ -4,7 +4,7 @@
       <div
         class="vertical"
         :style="{
-          color: direction === 'left' ? '#409eff' : '#666',
+          color: direction === 'left' ? '#0004ff' : '#eee',
           position: 'absolute',
           left: '40%',
           top: '43%',
@@ -17,7 +17,7 @@
     <div
       class="vertical"
       :style="{
-        color: direction === 'right' ? '#409eff' : '#666',
+        color: direction === 'right' ? '#0004ff' : '#eee',
         position: 'absolute',
         right: '40%',
         top: '43%',
