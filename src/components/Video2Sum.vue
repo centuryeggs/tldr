@@ -1,6 +1,6 @@
 <template>
   <div id="video">
-    <div class="inputBox">
+    <div class="inputBox" style="margin-top: 80px">
       <div class="upload">
         <el-upload
           class="upload-demo"
@@ -83,7 +83,7 @@ export default {
   width: 500px;
   height:320px;
   border-radius: 10px;
-  background:#222;
+  background:#01d8d0;
 }
 
 .inputBox {
@@ -102,6 +102,7 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: 30px;
+  background-color:rgba(250, 250, 250,0.4);
 }
 
 .textContent {

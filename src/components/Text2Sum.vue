@@ -85,5 +85,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color:rgba(250, 250, 250,0.4);
+}
+.el-textarea textarea {
+  background-color: rgba(250, 250, 250,0.4);
 }
 </style>

@@ -1,7 +1,46 @@
 <template>
   <div id="audio">
-    <div class="inputBox">
-      <div class="upload">
+    <div class="inputBox2">
+      <div class="video">
+        <!-- 黑色外边框 -->
+        <div class="bigBoder">
+          <div class="left">
+            <div class="cir"></div>
+          </div>
+          <div class="right">
+            <div class="cir"></div>
+          </div>
+          <canvas id="canvas" class="canvas" width="400px" height="280px">
+          </canvas>
+          <div class="buttons">
+            <el-button
+              type="warning"
+              icon="el-icon-microphone"
+              circle
+              @click="start()"
+            ></el-button>
+            <el-button
+              type="warning"
+              icon="el-icon-remove-outline"
+              circle
+              @click="stop()"
+            ></el-button>
+            <el-button
+              type="warning"
+              icon="el-icon-download"
+              circle
+              @click="downloadWAV()"
+            ></el-button>
+            <!-- <button @click="start()">开始录音</button>
+            <button @click="stop()">停止录音</button>
+            <button @click="play()">播放录音</button>
+            <button @click="downloadWAV()">下载</button> -->
+          </div>
+        </div>
+
+        <span v-if="oTime > 0">录音时长：{{ oTime }}s</span>
+      </div>
+      <div class="upload boxShadow" style="margin-left: 15px;">
         <el-upload
           class="upload-demo"
           drag
@@ -12,25 +51,11 @@
           :on-progress="onProgress"
         >
           <i class="el-icon-upload"></i>
-          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+          <div class="el-upload__text">音频上传</div>
         </el-upload>
       </div>
-      <div class="video">
-        <!-- 黑色外边框 -->
-        <div class="bigBoder">
-          <!-- <div></div>
-          <div></div> -->
-          <canvas id="canvas" class="canvas" width="400px" height="300px"></canvas>
-        </div>
-
-        <button @click="start()">开始录音</button>
-        <button @click="stop()">停止录音</button>
-        <button @click="play()">播放录音</button>
-        <button @click="downloadWAV()">下载</button>
-        <span v-if="oTime > 0">录音时长：{{ oTime }}s</span>
-      </div>
     </div>
-    <div class="outputBox">
+    <div class="outputBox boxShadow bgColor">
       <div class="textContent" v-if="results">{{ results }}</div>
       <div v-else>
         <el-empty description="啥也没有"></el-empty>
@@ -52,10 +77,10 @@ export default {
       drawRecordId: null,
       oCanvas: '',
       ctx: '',
-      oTime:0,
+      oTime: 0
     }
   },
-  inject:["setLoading"],
+  inject: ['setLoading'],
   mounted() {
     //初始化canvas
     this.init()
@@ -64,7 +89,7 @@ export default {
     init() {
       let oCanvas = document.getElementById('canvas') // 显示波形的canvas
       let canvasCtx = oCanvas.getContext('2d')
-      canvasCtx.fillStyle = 'rgb(200, 200, 200)'
+      canvasCtx.fillStyle = 'rgb(250, 250, 250)'
       canvasCtx.fillRect(0, 0, oCanvas.width, oCanvas.height)
 
       canvasCtx.lineWidth = 2
@@ -107,7 +132,7 @@ export default {
         bufferLength = dataArray.length
       let ctx = this.ctx
       // 填充背景色
-      ctx.fillStyle = 'rgb(200, 200, 200)'
+      ctx.fillStyle = 'rgb(250, 250, 250)'
       ctx.fillRect(0, 0, oCanvas.width, oCanvas.height)
 
       // 设定波形绘制颜色
@@ -187,24 +212,126 @@ export default {
   color: #fff;
 }
 
-.inputBox,
+.inputBox2,
 .outputBox {
   width: 1000px;
   margin: 30px auto;
+}
+
+.bgColor{
+  background-color:rgba(250, 250, 250,0.5);
+}
+
+.inputBox2 .left,
+.inputBox2 .right {
+  position: absolute;
+  width: 3px;
+  height: 50px;
+  background-color: #01d8d0;
+  left: 50%;
+  top: -50px;
+}
+
+.inputBox2 .cir {
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  background-color: #01d8d0;
+}
+
+.inputBox2 .left .cir {
+  position: relative;
+  left: -9px;
+  top:-9px;
+}
+
+.inputBox2 .right .cir {
+  position: relative;
+  left: -9px;
+  top:-9px;
+
+}
+
+.inputBox2 .left {
+  transform-origin: left bottom;
+  transform: rotate(45deg);
+}
+
+.inputBox2 .right {
+  transform-origin: right bottom;
+  transform: rotate(-45deg);
+}
+
+.boxShadow {
   box-shadow: 0 1px 5px #0003, 0 2px 2px #00000024, 0 3px 1px -2px #0000001f;
   border-radius: 4px;
 }
 
-.bigBoder{
+.bigBoder {
   width: 500px;
-  height:320px;
+  height: 320px;
+  box-shadow: 0 1px 5px #0003, 0 2px 2px #00000024, 0 3px 1px -2px #0000001f;
   border-radius: 10px;
-  background:#222;
+  background: #01d8d0;
+  position: relative;
 }
 
-.inputBox {
-  width: 1060px;
+.buttons {
+  position: absolute;
+  right: 20px;
+  top: 20px;
   display: flex;
+  flex-direction: column;
+}
+
+.buttons > button {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.buttons > button i[class^='el-icon-'] {
+  font-size: 20px;
+}
+
+.bigBoder .canvas {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.inputBox2 {
+  display: flex;
+  width: 1060px;
+  margin-top: 80px;
+}
+
+.inputBox2 .upload,
+.upload-demo {
+  height: 320px;
+  width: 100%;
+  position: relative;
+}
+.inputBox2 .el-upload-dragger{
+  height: 100%;
+  background-color:rgba(250, 250, 250,0.4);
+}
+
+.inputBox2 .el-upload-dragger .el-icon-upload {
+    font-size: 67px;
+    color: #01d8d0;
+    margin: 40px 0 16px;
+    line-height: 50px;
+    margin-top: 120px;
+}
+
+.inputBox2 .el-upload-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* display: none; */
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
 }
 .upload {
   height: 30vh;

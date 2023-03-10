@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <div class="title" @click="goHome">太长不看</div>
+    <div class="title" @click="goHome">
+      太长不看
+    </div>
     <router-view></router-view>
     <div v-if="loading" class="loading">
       <div id="circle_container">
