@@ -5,7 +5,7 @@
         <el-upload
           class="upload-demo"
           drag
-          action="http://172.16.8.150:7773/steam"
+          action="http://172.16.8.150:7773/radio_steam"
           multiple
           :on-success="handleAvatarSuccess"
         >
@@ -54,8 +54,8 @@ export default {
       console.log(tab, event)
     },
     handleAvatarSuccess(res) {
-        this.results = res.data;
-      },
+      this.results = res.data
+    },
     init() {
       // set up basic variables for app
       const record = document.querySelector('.record')
@@ -144,8 +144,8 @@ export default {
             soundClips.appendChild(clipContainer)
             //生成ogg文件流
             audio.controls = true
-            const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' })
-            // const blob = new Blob(chunks, { type: 'audio/wav' })
+            // const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' })
+            const blob = new Blob(chunks, { type: 'audio/wav' })
             chunks = []
             const audioURL = window.URL.createObjectURL(blob)
             audio.src = audioURL
