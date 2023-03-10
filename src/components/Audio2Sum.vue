@@ -44,6 +44,7 @@ export default {
       results: ''
     }
   },
+  inject:["setLoading"],
   mounted() {
     this.init()
   },
@@ -288,9 +289,11 @@ export default {
 .outputBox {
   height: 40vh;
   margin-top: 30px;
+  padding: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 30px;
 }
 
 .textContent {

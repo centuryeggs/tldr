@@ -6,12 +6,12 @@
         :style="{
           color: direction === 'left' ? '#0004ff' : '#eee',
           position: 'absolute',
-          left: '40%',
-          top: '43%',
+          left: '38%',
+          top: '48%',
           fontSize: '30px'
         }"
       >
-        太长不看
+        Text
       </div>
 
     <div
@@ -19,10 +19,11 @@
       :style="{
         color: direction === 'right' ? '#0004ff' : '#eee',
         position: 'absolute',
-        right: '40%',
-        top: '43%',
+        right: '38%',
+        top: '47%',
         fontSize: '30px'
-      }">太长不听</div>
+      }"><div>audio</div><div>video</div>
+    </div>
   </div>
 </template>
 
@@ -81,9 +82,9 @@ export default {
   width: 100vw;
   overflow: hidden;
 }
-.vertical {
+/* .vertical {
   writing-mode: tb-rl;
-}
+} */
 /* .bounce-enter-active {
   animation: bounce-in 3s;
 }
