@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <div class="title" @click="goHome">TL;DR</div>
+    <div class="title" @click="goHome">
+      太长不看
+    </div>
     <router-view></router-view>
     <div v-if="loading" class="loading">
       <div id="circle_container">
@@ -59,18 +61,20 @@ export default {
 .loading {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 #circle_container {
   height: 200px;
   width: 200px;
   border-radius: 50%;
+  position: absolute;
+  /*Centering*/
+  top: 12%;
+  right: 0%;
+  transform: translateX(-50%) translateY(-50%);
   background-color: #ddd;
   overflow: hidden;
   animation: background 4s -3.5s infinite;

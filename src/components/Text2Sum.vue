@@ -2,6 +2,7 @@
   <div id="text">
     <div class="inputBox">
       <el-input
+        :disabled="disabled"
         type="textarea"
         :rows="16"
         style="background: transparent;"
@@ -11,7 +12,9 @@
       </el-input>
     </div>
     <div class="outputBox">
-      <div v-if="results">{{ results }}</div>
+      <div v-if="resultsList && resultsList.length > 0">
+        <p style="text-align: left;padding-bottom: 6px;" v-for="i in resultsList" :key="i">{{ i }}</p>
+      </div>
       <div v-else>
         <el-empty description="啥也没有"></el-empty>
       </div>
@@ -27,18 +30,26 @@ export default {
   data() {
     return {
       textarea: '',
-      results: ''
+      results: '',
+      disabled: false
     }
   },
   inject:["setLoading"],
+  computed: {
+    resultsList() {
+      return this.results.split('\n').filter(i => i)
+    }
+  },
   methods: {
     post() {
       this.setLoading(true)
+      window.waveSpeed = 0.08
+      this.disabled = true
       axios({
         method: 'post',
         url: 'http://172.16.8.150:7773/text_steam',
         data: {
-          param: this.textarea.slice(0, -2),
+          param: this.textarea,
           _type: 1
         }
       }).then(res => {
@@ -46,6 +57,8 @@ export default {
         this.results = res.data.data
       }).finally(() => {
         this.setLoading(false)
+        window.waveSpeed = 0.03
+        this.disabled = false
       })
     }
   }
@@ -72,5 +85,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color:rgba(250, 250, 250,0.4);
+}
+.el-textarea textarea {
+  background-color: rgba(250, 250, 250,0.4);
 }
 </style>

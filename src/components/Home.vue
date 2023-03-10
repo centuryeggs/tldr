@@ -2,27 +2,37 @@
   <div id="home" style="font-size: 40px;">
     <!-- <div style="font-size: 40px; margin-top: 10px">太长不看</div> -->
       <div
-        class="vertical"
+        class="icon"
         :style="{
           color: direction === 'left' ? '#0004ff' : '#eee',
           position: 'absolute',
-          left: '38%',
-          top: '48%',
+          left: '39%',
+          top: '47.5%',
           fontSize: '30px'
         }"
       >
-        Text
+        <i class="el-icon-document"></i>
       </div>
-
     <div
-      class="vertical"
+      class="icon"
       :style="{
         color: direction === 'right' ? '#0004ff' : '#eee',
         position: 'absolute',
-        right: '38%',
-        top: '47%',
+        right: '39%',
+        top: '47.5%',
         fontSize: '30px'
-      }"><div>audio</div><div>video</div>
+      }"><i class="el-icon-microphone"></i>
+    </div>
+    <div
+      class="icon"
+      :style="{
+        color: direction === 'down' ? '#0004ff' : '#eee',
+        position: 'absolute',
+        left: '49%',
+        bottom: '33%',
+        fontSize: '30px'
+      }">
+      <i class="el-icon-video-camera"></i>
     </div>
   </div>
 </template>
@@ -60,6 +70,7 @@ export default {
         // this.$router.push({ path: router.path, replace: true })
       } else if (this.direction == "down") {
         console.log("down");
+        this.$router.push("/video");
       } else if (this.direction == "left") {
         this.$router.push("/text");
       } else if (this.direction == "right") {
@@ -102,4 +113,7 @@ export default {
     transform: scale(1);
   }
 } */
+.icon i[class^='el-icon-'] {
+    font-size: 50px;
+}
 </style>

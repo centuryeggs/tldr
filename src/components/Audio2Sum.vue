@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="upload boxShadow">
+      <div class="upload boxShadow" style="margin-left: 15px;">
         <el-upload
           class="upload-demo"
           drag
@@ -303,7 +303,7 @@ export default {
 .inputBox2 {
   display: flex;
   width: 1060px;
-  margin-top: 50px;
+  margin-top: 80px;
 }
 
 .inputBox2 .upload,
@@ -314,7 +314,7 @@ export default {
 }
 .inputBox2 .el-upload-dragger {
   height: 100%;
-  background-color: rgba(250, 250, 250, 0.5);
+  background-color:rgba(250, 250, 250,0.4);
 }
 
 .inputBox2 .el-upload-dragger .el-icon-upload {
@@ -337,10 +337,9 @@ export default {
 .upload {
   height: 30vh;
   color: #aaa;
-  margin-left: 15px;
 }
 .outputBox {
-  height: 40vh;
+  height: 30vh;
   margin-top: 30px;
   padding: 30px;
   display: flex;
