@@ -60,9 +60,9 @@ export default {
       } else if (this.direction == "down") {
         console.log("down");
       } else if (this.direction == "left") {
-        this.$router.push("/text/text");
+        this.$router.push("/text");
       } else if (this.direction == "right") {
-        this.$router.push("/text/audio");
+        this.$router.push("/audio");
       }
     }).on(
       "dir:up plain:up dir:left plain:left dir:down" +

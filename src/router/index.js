@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router'
 import Home from '/src/components/Home.vue'
 import Text2Sum from '/src/components/Text2Sum.vue'
-// import Audio2Sum from '/src/components/Audio2Sum.vue'
+import Audio2Sum from '/src/components/Audio2Sum.vue'
 const router = new VueRouter({
   routes: [
     {
@@ -14,15 +14,15 @@ const router = new VueRouter({
       component: Home
     },
     {
-      path: '/text/:type',
+      path: '/text',
       name: 'Text2Sum',
       component: Text2Sum
     },
-    // {
-    //   path: '/audio',
-    //   name: 'Audio2Sum',
-    //   component: Audio2Sum
-    // }
+    {
+      path: '/audio',
+      name: 'Audio2Sum',
+      component: Audio2Sum
+    }
   ],
 })
 
