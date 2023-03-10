@@ -4,12 +4,17 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'SanJiHuaXinJianTi-2';
+  src: url('./SanJiHuaXinJianTi-2.ttf');
+}
+
 html, body {
   height: 100%;
 }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'SanJiHuaXinJianTi-2,Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
 }
 
