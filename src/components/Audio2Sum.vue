@@ -203,6 +203,7 @@ export default {
 }
 
 .inputBox {
+  width: 1060px;
   display: flex;
 }
 .upload {
@@ -210,7 +211,7 @@ export default {
   color: #aaa;
 }
 .outputBox {
-  height: 40vh;
+  height: 30vh;
   margin-top: 30px;
   padding: 30px;
   display: flex;

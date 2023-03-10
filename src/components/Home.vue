@@ -2,7 +2,6 @@
   <div id="home" style="font-size: 40px;">
     <!-- <div style="font-size: 40px; margin-top: 10px">太长不看</div> -->
       <div
-        class="vertical"
         :style="{
           color: direction === 'left' ? '#0004ff' : '#eee',
           position: 'absolute',
@@ -11,18 +10,26 @@
           fontSize: '30px'
         }"
       >
-        Text
+        文本
       </div>
 
     <div
-      class="vertical"
       :style="{
         color: direction === 'right' ? '#0004ff' : '#eee',
         position: 'absolute',
         right: '38%',
         top: '47%',
         fontSize: '30px'
-      }"><div>audio</div><div>video</div>
+      }">音频
+    </div>
+    <div
+      :style="{
+        color: direction === 'down' ? '#0004ff' : '#eee',
+        position: 'absolute',
+        left: '48%',
+        bottom: '34%',
+        fontSize: '30px'
+      }">视频
     </div>
   </div>
 </template>
@@ -60,6 +67,7 @@ export default {
         // this.$router.push({ path: router.path, replace: true })
       } else if (this.direction == "down") {
         console.log("down");
+        this.$router.push("/video");
       } else if (this.direction == "left") {
         this.$router.push("/text");
       } else if (this.direction == "right") {
