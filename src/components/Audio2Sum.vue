@@ -107,7 +107,7 @@ export default {
         let _this = this
         this.recorder.onprocess = function (duration) {
           // 部分低版本浏览器不支持innerText，改用innerHTML
-          this.oTime = duration.toFixed(0)
+          _this.oTime = duration.toFixed(0)
         }
       }
       this.recorder.start().then(function () {
