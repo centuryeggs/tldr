@@ -49,8 +49,8 @@ export default {
     },
     onProgress(event, file, fileList) {
       console.log(event, file, fileList)
-      window.waveColor = [27, 30, 43] // [27, 30, 43] [252, 85, 49]
-      window.waveSpeed = 0.1
+      // window.waveColor = [27, 30, 43] // [27, 30, 43] [252, 85, 49]
+      window.waveSpeed = 0.2
       this.setLoading(true)
     },
     onError() {
@@ -106,7 +106,6 @@ export default {
 }
 
 .textContent {
-  color: #fff;
   height: calc(60vh - 300px);
   width: calc(1000px - 30px);
   text-align: left;

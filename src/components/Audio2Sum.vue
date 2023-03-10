@@ -188,15 +188,18 @@ export default {
     },
     handleAvatarSuccess(res) {
       this.results = res.data
+      this.setLoading(false)
       window.waveColor = [238, 238, 238]
       window.waveSpeed = 0.03
     },
     onProgress(event, file, fileList) {
+      this.setLoading(true)
       console.log(event, file, fileList)
       window.waveColor = [27, 30, 43] // [27, 30, 43] [252, 85, 49]
-      window.waveSpeed = 0.1
+      window.waveSpeed = 0.2
     },
     onError() {
+      this.setLoading(false)
       window.waveColor = [238, 238, 238]
       window.waveSpeed = 0.03
     }
